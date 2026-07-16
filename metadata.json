@@ -1,0 +1,6 @@
+{
+  "name": "Profil Warehouse Elnusa BSD",
+  "description": "Company profile dan presentasi interaktif Warehouse Elnusa BSD yang rapi, profesional, dan informatif untuk eksternal/manajemen.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
