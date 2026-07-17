@@ -332,7 +332,7 @@ export default function SlidePresenter() {
                         {/* Guard Gate Frame Card */}
                         <div className="bg-white p-2.5 rounded-2xl shadow-xl max-w-sm w-full border border-slate-200">
                           <img 
-                            src="/src/assets/images/cover_gate_card_1784259629238.jpg" 
+                            src="/src/assets/images/IMG_8965_optimized.jpg" 
                             alt="Gerbang Warehouse Elnusa BSD" 
                             className="w-full h-[140px] object-cover rounded-xl"
                             referrerPolicy="no-referrer"
@@ -411,7 +411,7 @@ export default function SlidePresenter() {
                       {/* Card H1-23 */}
                       <div className="bg-white rounded-2xl border border-slate-200 p-2 shadow-xs flex flex-col justify-between hover:scale-102 transition-transform duration-200">
                         <img 
-                          src="/src/assets/images/block_h1_23_1784259680349.jpg" 
+                          src="/src/assets/images/block_h1_23_new.jpg" 
                           alt="BLOK H1-23" 
                           className="w-full h-[180px] object-cover rounded-xl"
                           referrerPolicy="no-referrer"
@@ -429,7 +429,7 @@ export default function SlidePresenter() {
                       {/* Card H1-21 */}
                       <div className="bg-white rounded-2xl border border-slate-200 p-2 shadow-xs flex flex-col justify-between hover:scale-102 transition-transform duration-200">
                         <img 
-                          src="/src/assets/images/block_h1_21_1784259697132.jpg" 
+                          src="/src/assets/images/block_h1_21_new.jpg" 
                           alt="BLOK H1-21" 
                           className="w-full h-[180px] object-cover rounded-xl"
                           referrerPolicy="no-referrer"
@@ -447,7 +447,7 @@ export default function SlidePresenter() {
                       {/* Card H1-20 */}
                       <div className="bg-white rounded-2xl border border-slate-200 p-2 shadow-xs flex flex-col justify-between hover:scale-102 transition-transform duration-200">
                         <img 
-                          src="/src/assets/images/block_h1_20_1784259710424.jpg" 
+                          src="/src/assets/images/block_h1_20_new.jpg" 
                           alt="BLOK H1-20" 
                           className="w-full h-[180px] object-cover rounded-xl"
                           referrerPolicy="no-referrer"
