@@ -2,11 +2,53 @@ import React, { useState } from 'react';
 import SlidePresenter from './components/SlidePresenter';
 import { 
   Building2, Phone, AlertCircle, FileText, Database, ShieldAlert,
-  Info, Sparkles, ChevronRight, Download, Printer, UserCheck
+  Info, Sparkles, ChevronRight, Download, Printer, UserCheck,
+  X, Copy, ExternalLink, Check
 } from 'lucide-react';
 
 export default function App() {
   const [showPresenterGuide, setShowPresenterGuide] = useState<boolean>(true);
+  const [showReportModal, setShowReportModal] = useState<boolean>(false);
+  const [copiedText, setCopiedText] = useState<boolean>(false);
+
+  const WAREHOUSE_REPORT_TEXT = `================================================
+REKAPITULASI PROFIL OPERASIONAL WAREHOUSE ELNUSA BSD
+================================================
+Total Luas Lahan: 4.479 m² / 4.505 m² total area
+
+1. FASILITAS FISIK & PEMBAGIAN BLOK:
+- Blok H1-23 (2.156 m² | 28 m x 77 m):
+  Store Lantai 1, Workshop Mekanik & Drilling, TPS Limbah B3 berlisensi resmi KLHK, Area Parkir Kendaraan Berat (Vibro truck).
+- Blok H1-19 (810 m² | 18 m x 45 m):
+  Main Gate, Office Administrasi Lantai 1, Store Geophone & Area Test SMT, Asset Storage Lantai 2 (Radio & Komputer).
+- Blok H1-20 (801 m² | 18 m x 44,5 m):
+  Workshop Instrumentasi, Topografi, Promex, & TMS, Geophone Repair Area, Cable Storage Area, Ruang Rapat Lantai 2, Waste Water Treatment Plant (WWTP).
+- Blok H1-21 (738 m² | 18 m x 41 m):
+  Workshop Cable Repair, Molding Room, Musholah Utama, Mezzanine (Under Construction).
+
+2. STRUKTUR MANPOWER (80 Orang):
+- Manager: 2 Orang (Asal: ARP)
+- Warehouse Supervisor: 1 Orang (Asal: SCM)
+- Staff Reguler: 16 Orang (Asal: SCM, ARP, HSSE)
+- Tenaga Outsourcing: 61 Orang (Asal: SCM, ARP, MEDIC)
+
+3. KEPATUHAN HSSE & STRUKTUR ERT:
+- Fire Team (Leader: Widodo)
+- Injury Evacuation Team (Leader: Rona)
+- Oil Spill Team (Leader: Kustono)
+- Asset Guard Team (Leader: Fadli)
+- Bencana Alam Evacuation Team (Leader: Surajiman)
+
+Hotline Darurat: Kepala Warehouse Kustono (0852-1192-0331)
+
+================================================
+Sistem Informasi Pendukung: SAP SCM & ELSASCM (Aturan: No ASN, No Entry)`;
+
+  const handleCopyText = () => {
+    navigator.clipboard.writeText(WAREHOUSE_REPORT_TEXT);
+    setCopiedText(true);
+    setTimeout(() => setCopiedText(false), 2000);
+  };
 
   return (
     <div className="min-h-screen bg-elnusa-light text-slate-900 font-sans antialiased selection:bg-elnusa-red selection:text-white">
@@ -39,10 +81,10 @@ export default function App() {
             </span>
             <button
               id="btn-print-outline"
-              onClick={() => window.print()}
-              className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold cursor-pointer transition-colors"
+              onClick={() => setShowReportModal(true)}
+              className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold cursor-pointer transition-colors shadow-2xs"
             >
-              <Printer className="w-3.5 h-3.5" /> Cetak Ringkasan
+              <Printer className="w-3.5 h-3.5 text-elnusa-red" /> Cetak Ringkasan
             </button>
           </div>
         </div>
@@ -150,6 +192,117 @@ export default function App() {
           </p>
         </div>
       </footer>
+
+      {/* EXECUTIVE SUMMARY REPORT MODAL */}
+      {showReportModal && (
+        <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 animate-fade-in">
+          <div className="relative bg-white rounded-2xl max-w-2xl w-full border-t-4 border-elnusa-red shadow-2xl flex flex-col max-h-[90vh]">
+            
+            {/* Modal Header */}
+            <div className="p-5 border-b border-slate-100 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <FileText className="w-5 h-5 text-elnusa-red" />
+                <div>
+                  <h3 className="text-sm font-black text-elnusa-blue uppercase tracking-wider">Laporan Ringkasan Eksekutif</h3>
+                  <p className="text-[10px] text-slate-400 font-medium">Warehouse BSD Operational Overview</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowReportModal(false)}
+                className="p-1.5 hover:bg-slate-100 rounded-lg text-slate-400 hover:text-slate-600 transition-colors cursor-pointer"
+                title="Tutup"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-6 overflow-y-auto space-y-5 text-xs text-slate-700 leading-relaxed font-medium">
+              
+              {/* Note on Sandbox Limits */}
+              <div className="bg-amber-50 border border-amber-200/60 rounded-xl p-3.5 flex gap-2.5">
+                <Info className="w-4.5 h-4.5 text-amber-600 flex-shrink-0 mt-0.5" />
+                <div className="text-[11px] text-amber-800 space-y-1">
+                  <p className="font-bold">Informasi Akses & Cetak:</p>
+                  <p>
+                    Karena aplikasi dijalankan di dalam <strong>Interactive Preview Sandbox (Iframe)</strong>, fitur cetak langsung dari browser (<code className="bg-amber-100 px-1 py-0.5 rounded font-mono font-bold">Ctrl+P</code> / tombol cetak bawaan) mungkin diblokir oleh kebijakan keamanan browser.
+                  </p>
+                  <p className="font-semibold text-amber-900">
+                    Solusi: Buka aplikasi di tab baru (klik tombol di pojok kanan atas preview), lalu jalankan tombol cetak untuk mencetak atau menyimpannya sebagai PDF resmi!
+                  </p>
+                </div>
+              </div>
+
+              {/* Printable Summary Sheet Content */}
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 space-y-4 font-sans text-[11px] text-slate-800">
+                <div className="text-center border-b border-slate-200 pb-3">
+                  <h4 className="font-black text-xs text-elnusa-blue uppercase">PT ELNUSA TBK - WAREHOUSE BSD PROFILE</h4>
+                  <p className="text-[9px] text-slate-400 font-mono font-bold mt-0.5">REKAPITULASI RESMI OPERASIONAL TAHUN 2025</p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <span className="text-[9px] text-slate-400 uppercase font-black tracking-wider">Spesifikasi Lahan</span>
+                    <p className="font-bold text-slate-900">4.479 m² / 4.505 m² Total</p>
+                    <p className="text-[10px] text-slate-500">Terbagi atas 4 blok utama fungsional.</p>
+                  </div>
+                  <div>
+                    <span className="text-[9px] text-slate-400 uppercase font-black tracking-wider">Kapasitas Manpower</span>
+                    <p className="font-bold text-slate-900">80 Personil Aktif (POB)</p>
+                    <p className="text-[10px] text-slate-500">2 Manager, 1 Spv, 16 Staff, 61 Outsourcing.</p>
+                  </div>
+                </div>
+
+                <div className="space-y-1.5 border-t border-slate-200 pt-3">
+                  <span className="text-[9px] text-slate-400 uppercase font-black tracking-wider">Fasilitas Utama per Blok</span>
+                  <div className="space-y-1 pl-2 border-l-2 border-elnusa-red">
+                    <div><strong>Blok H1-23:</strong> Workshop Mekanik & Drilling, TPS Limbah B3, Parkir Vibro.</div>
+                    <div><strong>Blok H1-19:</strong> Kantor Administrasi, Store Geophone, Asset Storage Lantai 2.</div>
+                    <div><strong>Blok H1-20:</strong> Workshop Instrumentasi, Perbaikan Geophone, WWTP System.</div>
+                    <div><strong>Blok H1-21:</strong> Workshop Cable Repair, molding, Musholah, Mezzanine.</div>
+                  </div>
+                </div>
+
+                <div className="space-y-1 bg-white p-3 rounded-lg border border-slate-200/60">
+                  <span className="text-[9px] text-slate-400 uppercase font-black tracking-wider block">Aturan Utama Gudang</span>
+                  <p className="text-red-700 font-bold">"No ASN, No Entry"</p>
+                  <p className="text-[10px] text-slate-500">Setiap barang masuk wajib melalui pra-upload Advanced Shipping Notice sebelum diizinkan unloading.</p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-4 border-t border-slate-100 bg-slate-50 flex flex-col sm:flex-row items-center justify-between gap-3 rounded-b-2xl">
+              <button
+                onClick={handleCopyText}
+                className="w-full sm:w-auto px-4 py-2.5 bg-slate-900 hover:bg-slate-950 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-colors shadow-sm"
+              >
+                {copiedText ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-emerald-400" /> Berhasil Disalin!
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-3.5 h-3.5" /> Salin Ringkasan Teks
+                  </>
+                )}
+              </button>
+
+              <button
+                onClick={() => {
+                  setShowReportModal(false);
+                  window.open("https://ais-pre-6ndn5vvxjzjjrmrdn52246-190020873968.asia-east1.run.app", "_blank");
+                }}
+                className="w-full sm:w-auto px-4 py-2.5 bg-elnusa-red hover:bg-red-700 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-colors shadow-sm"
+              >
+                <ExternalLink className="w-3.5 h-3.5" /> Buka Tab Baru untuk Print
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
     </div>
   );
 }

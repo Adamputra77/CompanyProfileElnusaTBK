@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { 
   ArrowLeft, ArrowRight, Grid, Play, Pause, Maximize, Minimize,
   Edit2, FileText, MapPin, HardDrive, Cpu, Compass, Users, Clock,
-  Building, CheckCircle, AlertTriangle, HelpCircle, Save, Check, Award
+  Building, CheckCircle, AlertTriangle, HelpCircle, Save, Check, Award,
+  Globe, Linkedin, Instagram, Youtube
 } from 'lucide-react';
 import InteractiveMap from './InteractiveMap';
-import InteractiveProcessFlow from './InteractiveProcessFlow';
 import LabourStatistics from './LabourStatistics';
 import HsseDashboard from './HsseDashboard';
 import { BLOCKS_DATA, LABOUR_DATA, ABOUT_US_MANAGEMENT_SYSTEMS, BUSINESS_UNITS, TANTANGAN_STRATEGIS } from '../data/slidesData';
@@ -24,13 +24,13 @@ export default function SlidePresenter() {
     const saved = localStorage.getItem('elnusa_speaker_notes');
     return saved ? JSON.parse(saved) : {
       0: "Sambutan awal. Tekankan bahwa ini adalah profil operasional terintegrasi tahun 2025/2026.",
-      1: "Highlight total luasan 4.479 m2 yang terbagi menjadi 4 blok. Ini poin krusial untuk kapasitas.",
+      1: "Highlight total luasan 4.479 m2 yang terbagi menjadi 4 blok modular dengan kapasitas spesifik.",
       2: "Sampaikan kedekatan jarak (25.7 km, ±45 menit) dari Head Office Cilandak. 70% mobilisasi berputar di jalur ini.",
-      3: "Jelaskan sertifikasi ISO terintegrasi (9001, 14001, 45001, 55001, 37001). Ini bukti standardisasi internasional.",
-      4: "Sebutkan 7 unit bisnis seismik/non-seismik yang disokong logistiknya oleh BSD.",
-      5: "Tampilkan tabel 80 personil. Poin penting: mayoritas dioperasikan outsourcing (61 orang) dengan supervisi SCM/ARP.",
-      6: "Gunakan peta interaktif di bawah slide untuk menjelaskan peruntukan per blok secara detail.",
-      7: "Jelaskan 5 prinsip penerimaan. Tekankan proses check fisik demi menjaga akurasi material masuk.",
+      3: "Detail layout fisik satelit area BSD. Jelaskan batas-batas dimensi H1-23, H1-21, H1-20, dan H1-19.",
+      4: "Jelaskan sertifikasi ISO terintegrasi (9001, 14001, 45001, 55001, 37001). Ini bukti standardisasi internasional.",
+      5: "Sebutkan 7 unit bisnis seismik/non-seismik yang disokong logistiknya oleh BSD.",
+      6: "Tampilkan tabel 80 personil. Poin penting: mayoritas dioperasikan outsourcing (61 orang) dengan supervisi SCM/ARP.",
+      7: "Gunakan peta interaktif di bawah slide untuk menjelaskan peruntukan per blok secara detail.",
       8: "Tunjukkan alur ELSASCM & SAP. Jelaskan mitigasi bottleneck keterlambatan upload ASN oleh vendor.",
       9: "Tunjukkan dashboard HSSE & ERT. Sampaikan kesiapan tim Fire, Oil Spill, Evakuasi, serta Hotline Darurat BSD.",
       10: "Poin krusial untuk Pak Dodo/Manajemen: Menjelaskan isu keterbatasan space & rencana pengerjaan Mezzanine Blok H1-21.",
@@ -141,35 +141,35 @@ export default function SlidePresenter() {
       subtitle: "Konektivitas Cepat dengan Kantor Pusat Graha Elnusa",
       category: "LOKASI & AKSESIBILITAS"
     },
-    // 4. Tentang Kami
+    // 4. Site Map Satelit (NEW)
+    {
+      title: "Site Map Satelit & Dimensi Blok",
+      subtitle: "Batas Area Real dan Ukuran Fisik per Blok Modular",
+      category: "LOKASI & AKSESIBILITAS"
+    },
+    // 5. Tentang Kami
     {
       title: "Tentang Kami (About Us)",
       subtitle: "Komitmen Standardisasi Pengelolaan Aset & Kualitas Layanan",
       category: "STANDARISASI & KAPASITAS"
     },
-    // 5. Business Units
+    // 6. Business Units
     {
       title: "Unit Bisnis Terintegrasi",
       subtitle: "Penyedia Dukungan Logistik Lintas Fungsi untuk Efisiensi Proyek",
       category: "BUSINESS UNITS SUPPORT"
     },
-    // 6. Labour
+    // 7. Labour
     {
       title: "Struktur Tenaga Kerja (Labour)",
       subtitle: "Sinergi Sumber Daya Profesional (POB) untuk Operasional Gudang",
       category: "ORGANISASI & MANPOWER"
     },
-    // 7. Layout & Fasilitas
+    // 8. Layout & Fasilitas
     {
       title: "Layout & Fasilitas Gudang per Blok",
       subtitle: "Pembagian Sektor Modular Berdasarkan Kategori Peralatan",
       category: "FASILITAS & AREA BLOK"
-    },
-    // 8. Proses Bisnis
-    {
-      title: "Proses Bisnis Warehouse & Inventory",
-      subtitle: "Mekanisme SCM yang Rigid Dari Penerimaan Hingga Mobilisasi",
-      category: "BUSINESS OPERATIONS"
     },
     // 9. Sistem & Mekanisme
     {
@@ -274,33 +274,109 @@ export default function SlidePresenter() {
               
               {/* Dynamic Slide Renderer */}
               <div className="max-w-4xl mx-auto w-full">
-                
-                {/* CATEGORY 1: COVER (Slide 0) */}
+                                {/* CATEGORY 1: COVER (Slide 0) */}
                 {currentSlide === 0 && (
-                  <div className="space-y-6 text-center py-6">
-                    <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/30 px-3.5 py-1 rounded-full text-xs font-mono text-red-400 font-semibold mb-2">
-                      <Award className="w-4 h-4 text-red-400" /> A Member of Subholding Upstream Pertamina
+                  <div className="relative w-full h-[520px] rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 flex flex-col justify-between p-6 text-slate-900">
+                    {/* Background image full bleed on the left, fade out or blue-overlay to the right */}
+                    <div className="absolute inset-0 z-0 flex">
+                      <div className="w-1/2 relative h-full">
+                        <img 
+                          src="/src/assets/images/cover_left_bg_1784259612125.jpg" 
+                          alt="Elnusa heavy equipment" 
+                          className="w-full h-full object-cover"
+                          referrerPolicy="no-referrer"
+                        />
+                        <div className="absolute inset-0 bg-elnusa-blue/70 mix-blend-multiply" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-slate-900" />
+                      </div>
+                      <div className="w-1/2 bg-gradient-to-r from-slate-900 to-slate-950 h-full" />
                     </div>
-                    <h1 className={`${getTextSizeClass('title')} font-black tracking-tight leading-none bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent`}>
-                      {slides[currentSlide].title}
-                    </h1>
-                    <p className="text-sm md:text-base text-slate-400 max-w-2xl mx-auto font-medium">
-                      {slides[currentSlide].subtitle}
-                    </p>
-                    <div className="w-16 h-1 bg-red-600 mx-auto rounded-full my-6" />
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-left pt-6">
-                      <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-                        <div className="text-[10px] text-slate-400 font-mono uppercase font-bold">LOKASI UTAMA</div>
-                        <div className="text-xs font-bold text-slate-200 mt-1">BSD City, Tangerang Selatan</div>
+
+                    {/* Top Badges */}
+                    <div className="absolute top-0 left-0 right-0 p-4 z-20 flex justify-between items-start">
+                      {/* Top-left: Danantara Badge */}
+                      <div className="bg-white px-4 py-2 rounded-br-2xl rounded-tl-xl shadow-md flex items-center gap-1.5 border-b border-r border-slate-200">
+                        <span className="text-elnusa-red font-black text-sm tracking-tighter">1st</span>
+                        <div className="flex flex-col">
+                          <span className="text-[10px] font-black text-slate-900 leading-tight">Danantara</span>
+                          <span className="text-[8px] font-bold text-slate-500 leading-none">Indonesia</span>
+                        </div>
                       </div>
-                      <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-                        <div className="text-[10px] text-slate-400 font-mono uppercase font-bold">TOTAL LUASAN LAHAN</div>
-                        <div className="text-xs font-bold text-slate-200 mt-1">4.479 m² / 4 Blok Modular</div>
+
+                      {/* Top-right: Elnusa Badge */}
+                      <div className="bg-white px-4 py-2 rounded-bl-2xl rounded-tr-xl shadow-md flex items-center gap-2 border-b border-l border-slate-200 text-right">
+                        <div className="flex flex-col">
+                          <span className="text-xs font-black text-elnusa-blue leading-tight tracking-tight">elnusa</span>
+                          <span className="text-[7px] font-semibold text-slate-500 leading-none">A Member of Subholding Upstream Pertamina</span>
+                        </div>
+                        <div className="w-1.5 h-6 bg-elnusa-red rounded-full" />
                       </div>
-                      <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-                        <div className="text-[10px] text-slate-400 font-mono uppercase font-bold">STANDARISASI INTERNASIONAL</div>
-                        <div className="text-xs font-bold text-slate-200 mt-1">Sertifikasi 5 ISO Terintegrasi</div>
+                    </div>
+
+                    {/* Content Area - Split */}
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center z-10 mt-12 mb-4 flex-1">
+                      {/* Left: decorative / empty as it's bg */}
+                      <div className="md:col-span-5 h-full hidden md:block" />
+
+                      {/* Right: Title and Guard Gate card */}
+                      <div className="md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left space-y-4">
+                        <div className="space-y-1">
+                          <h1 className="text-3xl md:text-4.5xl font-black tracking-tight leading-none text-white drop-shadow-md">
+                            PROFIL
+                          </h1>
+                          <h2 className="text-xl md:text-2xl font-bold tracking-tight text-slate-100 drop-shadow-sm">
+                            Warehouse Elnusa BSD
+                          </h2>
+                        </div>
+
+                        {/* Guard Gate Frame Card */}
+                        <div className="bg-white p-2.5 rounded-2xl shadow-xl max-w-sm w-full border border-slate-200">
+                          <img 
+                            src="/src/assets/images/cover_gate_card_1784259629238.jpg" 
+                            alt="Gerbang Warehouse Elnusa BSD" 
+                            className="w-full h-[140px] object-cover rounded-xl"
+                            referrerPolicy="no-referrer"
+                          />
+                          <p className="text-[9px] text-slate-500 font-bold text-center mt-1.5 font-mono">
+                            DOKUMENTASI GERBANG UTAMA & AREA OPERASIONAL
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom Area overlay containing the 3 info boxes, Visi, and Social badge */}
+                    <div className="z-10 mt-auto space-y-3">
+                      {/* Visi */}
+                      <div className="text-center">
+                        <span className="text-[10px] md:text-xs font-bold tracking-wider text-white bg-slate-900/80 px-4 py-1.5 rounded-full inline-block border border-white/5">
+                          VISI: PERUSAHAAN JASA ENERGI TERKEMUKA YANG MEMBERIKAN SOLUSI TOTAL
+                        </span>
+                      </div>
+
+                      {/* Overlay Info Boxes */}
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div className="bg-slate-900/90 backdrop-blur-xs border border-white/10 rounded-xl p-3 shadow-sm">
+                          <div className="text-[8px] text-slate-400 font-mono uppercase font-bold">LOKASI UTAMA</div>
+                          <div className="text-[10px] font-bold text-slate-200 mt-0.5">BSD City, Tangerang Selatan</div>
+                        </div>
+                        <div className="bg-slate-900/90 backdrop-blur-xs border border-white/10 rounded-xl p-3 shadow-sm">
+                          <div className="text-[8px] text-slate-400 font-mono uppercase font-bold">TOTAL LUASAN LAHAN</div>
+                          <div className="text-[10px] font-bold text-slate-200 mt-0.5">4.479 m² / 4 Blok Modular</div>
+                        </div>
+                        <div className="bg-slate-900/90 backdrop-blur-xs border border-white/10 rounded-xl p-3 shadow-sm">
+                          <div className="text-[8px] text-slate-400 font-mono uppercase font-bold">STANDARISASI INTERNASIONAL</div>
+                          <div className="text-[10px] font-bold text-slate-200 mt-0.5">Sertifikasi 5 ISO Terintegrasi</div>
+                        </div>
+                      </div>
+
+                      {/* Social Media Badges */}
+                      <div className="flex justify-center items-center gap-3 pt-1 border-t border-white/5">
+                        <div className="bg-white rounded-full px-3 py-1 text-[9px] text-slate-800 font-mono flex items-center gap-3.5 shadow-sm font-semibold">
+                          <span className="flex items-center gap-1"><Globe className="w-3.5 h-3.5 text-blue-600" /> www.elnusa.co.id</span>
+                          <span className="flex items-center gap-1"><Linkedin className="w-3.5 h-3.5 text-blue-700" /> PT Elnusa Tbk</span>
+                          <span className="flex items-center gap-1"><Instagram className="w-3.5 h-3.5 text-pink-600" /> @elnusaofficial</span>
+                          <span className="flex items-center gap-1"><Youtube className="w-3.5 h-3.5 text-red-600" /> elnusa</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -308,44 +384,101 @@ export default function SlidePresenter() {
 
                 {/* CATEGORY 2: SAMBUTAN (Slide 1) */}
                 {currentSlide === 1 && (
-                  <div className="space-y-6">
-                    <div className="flex flex-col gap-2">
-                      <h2 className={`${getTextSizeClass('title')} font-black tracking-tight text-white`}>
-                        {slides[currentSlide].title}
-                      </h2>
-                      <p className="text-xs text-red-400 font-bold tracking-wider uppercase font-mono">
-                        {slides[currentSlide].subtitle}
-                      </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center pt-2">
-                      {/* Left Big Area info */}
-                      <div className="md:col-span-5 bg-gradient-to-br from-blue-900/50 to-indigo-950/40 border border-blue-500/20 rounded-2xl p-6 text-center">
-                        <div className="text-xs font-bold text-slate-300 uppercase tracking-widest mb-1">TOTAL LUASAN</div>
-                        <div className="text-4xl md:text-5xl font-black text-white tracking-tight my-2 font-mono">4.479<span className="text-lg text-slate-400 font-normal">m²</span></div>
-                        <p className="text-[11px] text-slate-400 leading-normal">Total kapasitas area fungsional pergudangan logistik & perbaikan peralatan seismik darat di Tangerang Selatan.</p>
+                  <div className="space-y-4 w-full h-full text-slate-900">
+                    {/* Header bar */}
+                    <div className="flex justify-between items-center bg-slate-100 p-2.5 rounded-xl border border-slate-200 relative">
+                      {/* Top left total luasan badge */}
+                      <div className="bg-slate-900 text-white text-[9px] font-bold px-2.5 py-1 rounded font-mono">
+                        Total Luasan: 4.479 M2
                       </div>
 
-                      {/* Right Grid of Blocks sizes */}
-                      <div className="md:col-span-7 grid grid-cols-2 gap-3">
-                        {BLOCKS_DATA.map((block) => (
-                          <div key={block.id} className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-3 transition-colors">
-                            <div className="flex items-center justify-between">
-                              <span className="font-bold text-xs text-slate-300">{block.name}</span>
-                              <span className="text-[9px] text-slate-400 font-mono">{block.dimensions}</span>
-                            </div>
-                            <div className="text-lg font-black text-white mt-1.5 font-mono">{block.size}</div>
-                            <p className="text-[9px] text-slate-400 mt-1 truncate">{block.facilities[0]}</p>
+                      {/* Header banner */}
+                      <div className="bg-indigo-50 border border-indigo-100 px-6 py-2 rounded-lg mx-auto text-center shadow-xs">
+                        <h2 className="text-sm md:text-base font-black tracking-wide text-indigo-900 uppercase">
+                          Welcome To The Elnusa Warehouse - BSD
+                        </h2>
+                      </div>
+
+                      {/* Top right Elnusa logo */}
+                      <div className="flex items-center gap-1.5 text-right">
+                        <span className="text-xs font-black text-blue-600 leading-none">elnusa</span>
+                        <div className="w-1 h-4 bg-red-600 rounded-full" />
+                      </div>
+                    </div>
+
+                    {/* 4 Cards horizontal grid */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 pt-1">
+                      {/* Card H1-23 */}
+                      <div className="bg-white rounded-2xl border border-slate-200 p-2 shadow-xs flex flex-col justify-between hover:scale-102 transition-transform duration-200">
+                        <img 
+                          src="/src/assets/images/block_h1_23_1784259680349.jpg" 
+                          alt="BLOK H1-23" 
+                          className="w-full h-[180px] object-cover rounded-xl"
+                          referrerPolicy="no-referrer"
+                        />
+                        <div className="mt-3 text-center space-y-1.5">
+                          <div className="bg-blue-50 border border-blue-100 py-1 rounded-lg">
+                            <span className="text-xs font-black text-slate-800 tracking-tight">BLOK H1-23</span>
                           </div>
-                        ))}
+                          <div className="bg-red-600 text-white py-0.5 rounded-md font-mono font-bold text-[10px] shadow-sm">
+                            2.156 M2
+                          </div>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="text-[11px] text-slate-400 bg-white/5 border border-white/10 rounded-xl p-3 flex gap-2">
-                      <Clock className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
-                      <span>
-                        Penyediaan luasan tanah modular per blok mendukung keamanan material fungsional tinggi seperti <strong>Store Geophone, Workshop Radio, Mold Repair,</strong> dan penampungan khusus <strong>Limbah B3</strong> berbahaya.
-                      </span>
+                      {/* Card H1-21 */}
+                      <div className="bg-white rounded-2xl border border-slate-200 p-2 shadow-xs flex flex-col justify-between hover:scale-102 transition-transform duration-200">
+                        <img 
+                          src="/src/assets/images/block_h1_21_1784259697132.jpg" 
+                          alt="BLOK H1-21" 
+                          className="w-full h-[180px] object-cover rounded-xl"
+                          referrerPolicy="no-referrer"
+                        />
+                        <div className="mt-3 text-center space-y-1.5">
+                          <div className="bg-blue-50 border border-blue-100 py-1 rounded-lg">
+                            <span className="text-xs font-black text-slate-800 tracking-tight">BLOK H1-21</span>
+                          </div>
+                          <div className="bg-red-600 text-white py-0.5 rounded-md font-mono font-bold text-[10px] shadow-sm">
+                            738 M2
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Card H1-20 */}
+                      <div className="bg-white rounded-2xl border border-slate-200 p-2 shadow-xs flex flex-col justify-between hover:scale-102 transition-transform duration-200">
+                        <img 
+                          src="/src/assets/images/block_h1_20_1784259710424.jpg" 
+                          alt="BLOK H1-20" 
+                          className="w-full h-[180px] object-cover rounded-xl"
+                          referrerPolicy="no-referrer"
+                        />
+                        <div className="mt-3 text-center space-y-1.5">
+                          <div className="bg-blue-50 border border-blue-100 py-1 rounded-lg">
+                            <span className="text-xs font-black text-slate-800 tracking-tight">BLOK H1-20</span>
+                          </div>
+                          <div className="bg-red-600 text-white py-0.5 rounded-md font-mono font-bold text-[10px] shadow-sm">
+                            801 M2
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Card H1-19 */}
+                      <div className="bg-white rounded-2xl border border-slate-200 p-2 shadow-xs flex flex-col justify-between hover:scale-102 transition-transform duration-200">
+                        <img 
+                          src="/src/assets/images/block_h1_19_1784259724899.jpg" 
+                          alt="BLOK H1-19" 
+                          className="w-full h-[180px] object-cover rounded-xl"
+                          referrerPolicy="no-referrer"
+                        />
+                        <div className="mt-3 text-center space-y-1.5">
+                          <div className="bg-blue-50 border border-blue-100 py-1 rounded-lg">
+                            <span className="text-xs font-black text-slate-800 tracking-tight">BLOK H1-19</span>
+                          </div>
+                          <div className="bg-red-600 text-white py-0.5 rounded-md font-mono font-bold text-[10px] shadow-sm">
+                            810 M2
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -425,8 +558,97 @@ export default function SlidePresenter() {
                   </div>
                 )}
 
-                {/* CATEGORY 4: ABOUT US (Slide 3) */}
+                {/* CATEGORY 3B: SITE MAP SATELIT & DIMENSI BLOK (NEW Slide 3) */}
                 {currentSlide === 3 && (
+                  <div className="space-y-4 text-slate-900 w-full h-full">
+                    <div className="flex justify-between items-center bg-slate-100 p-3 rounded-xl border border-slate-200 relative">
+                      <div className="flex flex-col">
+                        <h2 className="text-sm font-black text-slate-900 uppercase">
+                          SITE MAP SATELIT & DIMENSI BLOK
+                        </h2>
+                        <p className="text-[10px] text-slate-500 font-bold font-mono">
+                          PERSPEKTIF UDARA AREA WAREHOUSE BSD
+                        </p>
+                      </div>
+
+                      {/* Elnusa Logo */}
+                      <div className="flex items-center gap-1.5 text-right">
+                        <span className="text-xs font-black text-blue-600 leading-none">elnusa</span>
+                        <div className="w-1 h-4 bg-red-600 rounded-full" />
+                      </div>
+                    </div>
+
+                    {/* Content Section: Image with custom yellow border styling and detailed dimensions sidebar */}
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch pt-1">
+                      {/* Satellite Image View */}
+                      <div className="md:col-span-8 bg-white p-2.5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-center">
+                        <div className="relative w-full h-[280px] rounded-xl overflow-hidden border border-yellow-400">
+                          <img 
+                            src="/src/assets/images/aerial_sitemap_1784259664261.jpg" 
+                            alt="Aerial Site Map Elnusa BSD" 
+                            className="w-full h-full object-cover"
+                            referrerPolicy="no-referrer"
+                          />
+                          <div className="absolute top-2 left-2 bg-yellow-400 text-slate-900 text-[8px] font-black px-2 py-0.5 rounded shadow-sm font-mono">
+                            SATELLITE VIEW
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Sidebar detailed listing */}
+                      <div className="md:col-span-4 flex flex-col justify-between bg-slate-50 border border-slate-200 rounded-2xl p-4.5 space-y-3.5">
+                        <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-wider pb-1.5 border-b border-slate-200">
+                          DIMENSI FISIK MODULAR
+                        </h4>
+
+                        <div className="space-y-3 flex-1 justify-center flex flex-col">
+                          {/* Item H1-23 */}
+                          <div className="flex items-center gap-2.5">
+                            <span className="w-5 h-5 rounded-md bg-yellow-400 text-slate-900 flex items-center justify-center text-[9px] font-black font-mono">23</span>
+                            <div className="flex-1">
+                              <h5 className="text-[11px] font-black text-slate-800 leading-tight">H1 NO 23</h5>
+                              <p className="text-[10px] text-slate-500 font-mono font-semibold">PXL (28 M x 77 M)</p>
+                            </div>
+                          </div>
+
+                          {/* Item H1-21 */}
+                          <div className="flex items-center gap-2.5">
+                            <span className="w-5 h-5 rounded-md bg-yellow-400 text-slate-900 flex items-center justify-center text-[9px] font-black font-mono">21</span>
+                            <div className="flex-1">
+                              <h5 className="text-[11px] font-black text-slate-800 leading-tight">H1 NO 21</h5>
+                              <p className="text-[10px] text-slate-500 font-mono font-semibold">PXL (18 M x 41 M)</p>
+                            </div>
+                          </div>
+
+                          {/* Item H1-20 */}
+                          <div className="flex items-center gap-2.5">
+                            <span className="w-5 h-5 rounded-md bg-yellow-400 text-slate-900 flex items-center justify-center text-[9px] font-black font-mono">20</span>
+                            <div className="flex-1">
+                              <h5 className="text-[11px] font-black text-slate-800 leading-tight">H1 NO 20</h5>
+                              <p className="text-[10px] text-slate-500 font-mono font-semibold">PXL (18 M x 44,5 M)</p>
+                            </div>
+                          </div>
+
+                          {/* Item H1-19 */}
+                          <div className="flex items-center gap-2.5">
+                            <span className="w-5 h-5 rounded-md bg-yellow-400 text-slate-900 flex items-center justify-center text-[9px] font-black font-mono">19</span>
+                            <div className="flex-1">
+                              <h5 className="text-[11px] font-black text-slate-800 leading-tight">H1 NO 19</h5>
+                              <p className="text-[10px] text-slate-500 font-mono font-semibold">PXL (18 M x 45 M)</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-yellow-400/10 border border-yellow-400/30 p-2.5 rounded-xl text-[9px] text-slate-700 font-medium">
+                          Batas area modular ditandai secara presisi dalam sistem GIS Elnusa untuk plotting material & penempatan cargo hoist.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* CATEGORY 4: ABOUT US (Slide 4) */}
+                {currentSlide === 4 && (
                   <div className="space-y-6">
                     <div className="flex flex-col gap-1">
                       <h2 className={`${getTextSizeClass('title')} font-black tracking-tight text-white`}>
@@ -484,8 +706,8 @@ export default function SlidePresenter() {
                   </div>
                 )}
 
-                {/* CATEGORY 5: BUSINESS UNITS (Slide 4) */}
-                {currentSlide === 4 && (
+                {/* CATEGORY 5: BUSINESS UNITS (Slide 5) */}
+                {currentSlide === 5 && (
                   <div className="space-y-6">
                     <div className="flex flex-col gap-1">
                       <h2 className={`${getTextSizeClass('title')} font-black tracking-tight text-white`}>
@@ -513,13 +735,13 @@ export default function SlidePresenter() {
                     </div>
 
                     <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-3 text-xs text-slate-300">
-                      <strong>Sinergi Total:</strong> Integrasi 7 unit fungsional utama ini menjamin bahwa seluruh data, armada seismik, dan peralatan pendukung pemboran dikalibrasi di satu pusat fungsional: BSD.
+                      <strong>Sinergi Total:</strong> Integrasi 7 unit fungsional utama ini menjamin bahwa seluruh data, armada seismik, dan peralatan pendukung pemboran dikalibrasi di satu fungsional pusat: BSD.
                     </div>
                   </div>
                 )}
 
-                {/* CATEGORY 6: LABOUR (Slide 5) */}
-                {currentSlide === 5 && (
+                {/* CATEGORY 6: LABOUR (Slide 6) */}
+                {currentSlide === 6 && (
                   <div className="space-y-4">
                     <div className="flex flex-col gap-1 mb-4">
                       <h2 className={`${getTextSizeClass('title')} font-black tracking-tight text-white`}>
@@ -537,8 +759,8 @@ export default function SlidePresenter() {
                   </div>
                 )}
 
-                {/* CATEGORY 7: LAYOUT & FASILITAS (Slide 6) */}
-                {currentSlide === 6 && (
+                {/* CATEGORY 7: LAYOUT & FASILITAS (Slide 7) */}
+                {currentSlide === 7 && (
                   <div className="space-y-4">
                     <div className="flex flex-col gap-1 mb-4">
                       <h2 className={`${getTextSizeClass('title')} font-black tracking-tight text-white`}>
@@ -556,26 +778,7 @@ export default function SlidePresenter() {
                   </div>
                 )}
 
-                {/* CATEGORY 8: PROSES BISNIS (Slide 7) */}
-                {currentSlide === 7 && (
-                  <div className="space-y-4">
-                    <div className="flex flex-col gap-1 mb-4">
-                      <h2 className={`${getTextSizeClass('title')} font-black tracking-tight text-white`}>
-                        {slides[currentSlide].title}
-                      </h2>
-                      <p className="text-xs text-red-400 font-bold tracking-wider uppercase font-mono">
-                        {slides[currentSlide].subtitle}
-                      </p>
-                    </div>
-
-                    {/* Embedded interactive process component */}
-                    <div className="bg-slate-900 border border-white/10 rounded-2xl p-2 text-slate-900">
-                      <InteractiveProcessFlow />
-                    </div>
-                  </div>
-                )}
-
-                {/* CATEGORY 9: SISTEM & MEKANISME (Slide 8) */}
+                {/* CATEGORY 8: SISTEM & MEKANISME (Slide 8) */}
                 {currentSlide === 8 && (
                   <div className="space-y-6">
                     <div className="flex flex-col gap-1">
@@ -646,7 +849,7 @@ export default function SlidePresenter() {
                   </div>
                 )}
 
-                {/* CATEGORY 10: LEGAL COMPLIANCE HSSE (Slide 9) */}
+                {/* CATEGORY 9: LEGAL COMPLIANCE HSSE (Slide 9) */}
                 {currentSlide === 9 && (
                   <div className="space-y-4">
                     <div className="flex flex-col gap-1 mb-4">
@@ -665,7 +868,7 @@ export default function SlidePresenter() {
                   </div>
                 )}
 
-                {/* CATEGORY 11: TANTANGAN & ISU (Slide 10) */}
+                {/* CATEGORY 10: TANTANGAN & ISU (Slide 10) */}
                 {currentSlide === 10 && (
                   <div className="space-y-6">
                     <div className="flex flex-col gap-1">
@@ -690,7 +893,7 @@ export default function SlidePresenter() {
                               </span>
                             </div>
                             <h4 className="text-xs font-black text-slate-200 leading-snug mb-1.5">
-                              {issue.title}
+                                {issue.title}
                             </h4>
                             <p className="text-[11px] text-slate-400 leading-relaxed">
                               {issue.desc}
@@ -708,7 +911,7 @@ export default function SlidePresenter() {
                   </div>
                 )}
 
-                {/* CATEGORY 12: PENUTUP (Slide 11) */}
+                {/* CATEGORY 11: PENUTUP (Slide 11) */}
                 {currentSlide === 11 && (
                   <div className="space-y-6 text-center py-6">
                     <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/30 px-3.5 py-1 rounded-full text-xs font-mono text-red-400 font-semibold mb-2">
@@ -975,7 +1178,7 @@ export default function SlidePresenter() {
             </span>
             <h3 className="text-2xl font-black text-slate-900 mt-2">Pusat Simulasi Logistik & Pemetaan Aset</h3>
             <p className="text-xs text-slate-500 max-w-3xl mt-1">
-              Halaman ini diperuntukkan bagi presentasi interaktif di depan atasan / manajemen. Anda dapat memicu alur barang masuk/keluar atau memetakan blok gudang secara dinamis untuk memperlihatkan detail utilitas.
+              Halaman ini diperuntukkan bagi presentasi interaktif di depan atasan / manajemen. Anda dapat memetakan blok gudang secara dinamis untuk memperlihatkan detail fungsional masing-masing blok.
             </p>
           </div>
 
@@ -985,13 +1188,6 @@ export default function SlidePresenter() {
                 <Building className="w-4 h-4 text-red-500" /> Pemetaan Blok & Fasilitas Fisik Gudang
               </h4>
               <InteractiveMap />
-            </div>
-
-            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
-              <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-                <Cpu className="w-4 h-4 text-blue-500" /> Simulasi Bisnis Proses & Alur Dokumen SAP
-              </h4>
-              <InteractiveProcessFlow />
             </div>
           </div>
         </div>
