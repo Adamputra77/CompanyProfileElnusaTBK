@@ -209,9 +209,9 @@ export default function SlidePresenter() {
   // Helper text size classes
   const getTextSizeClass = (type: 'title' | 'body') => {
     if (type === 'title') {
-      return fontSize === 'sm' ? 'text-2xl' : fontSize === 'base' ? 'text-3.5xl' : 'text-5xl';
+      return fontSize === 'sm' ? 'text-xl md:text-2xl' : fontSize === 'base' ? 'text-2xl md:text-3.5xl' : 'text-3xl md:text-5xl';
     }
-    return fontSize === 'sm' ? 'text-xs' : fontSize === 'base' ? 'text-sm' : 'text-base';
+    return fontSize === 'sm' ? 'text-xs' : fontSize === 'base' ? 'text-xs md:text-sm' : 'text-sm md:text-base';
   };
 
   return (
@@ -264,7 +264,7 @@ export default function SlidePresenter() {
       {viewMode === 'PRESENTATION' && (
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 items-stretch">
           {/* SLIDE DECK (Col 9) */}
-          <div className="xl:col-span-9 flex flex-col justify-between bg-slate-950 text-white rounded-3xl overflow-hidden min-h-[620px] shadow-2xl border border-slate-800 flex-1 relative" id="presentation-viewport">
+          <div className="xl:col-span-9 flex flex-col justify-between bg-slate-950 text-white rounded-3xl overflow-hidden min-h-[440px] sm:min-h-[500px] md:min-h-[580px] xl:min-h-[620px] shadow-2xl border border-slate-800 flex-1 relative" id="presentation-viewport">
             
             {/* Top Indicator */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-white/5 bg-gradient-to-r from-slate-950 to-slate-900">
@@ -285,10 +285,10 @@ export default function SlidePresenter() {
               <div className="max-w-4xl mx-auto w-full">
                                 {/* CATEGORY 1: COVER (Slide 0) */}
                 {currentSlide === 0 && (
-                  <div className="relative w-full h-[520px] rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 flex flex-col justify-between p-6 text-slate-900">
+                  <div className="relative w-full min-h-[460px] md:h-[520px] h-auto rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 flex flex-col justify-between p-4 md:p-6 text-slate-900">
                     {/* Background image full bleed on the left, fade out or blue-overlay to the right */}
                     <div className="absolute inset-0 z-0 flex">
-                      <div className="w-1/2 relative h-full">
+                      <div className="w-full md:w-1/2 relative h-full">
                         <img 
                           src={coverLeftBg} 
                           alt="Elnusa heavy equipment" 
@@ -297,56 +297,57 @@ export default function SlidePresenter() {
                         />
                         <div className="absolute inset-0 bg-elnusa-blue/70 mix-blend-multiply" />
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent to-slate-900" />
+                        <div className="absolute inset-0 md:hidden bg-gradient-to-t from-slate-950 via-slate-950/85 to-transparent" />
                       </div>
-                      <div className="w-1/2 bg-gradient-to-r from-slate-900 to-slate-950 h-full" />
+                      <div className="hidden md:block w-1/2 bg-gradient-to-r from-slate-900 to-slate-950 h-full" />
                     </div>
 
                     {/* Top Badges */}
-                    <div className="absolute top-0 left-0 right-0 p-4 z-20 flex justify-between items-start">
+                    <div className="absolute top-0 left-0 right-0 p-3 md:p-4 z-20 flex justify-between items-start gap-2">
                       {/* Top-left: Danantara Badge */}
-                      <div className="bg-white px-4 py-2 rounded-br-2xl rounded-tl-xl shadow-md flex items-center gap-1.5 border-b border-r border-slate-200">
-                        <span className="text-elnusa-red font-black text-sm tracking-tighter">1st</span>
+                      <div className="bg-white px-2 py-1 md:px-4 md:py-2 rounded-br-xl md:rounded-br-2xl rounded-tl-lg md:rounded-tl-xl shadow-md flex items-center gap-1 md:gap-1.5 border-b border-r border-slate-200">
+                        <span className="text-elnusa-red font-black text-xs md:text-sm tracking-tighter">1st</span>
                         <div className="flex flex-col">
-                          <span className="text-[10px] font-black text-slate-900 leading-tight">Danantara</span>
-                          <span className="text-[8px] font-bold text-slate-500 leading-none">Indonesia</span>
+                          <span className="text-[8px] md:text-[10px] font-black text-slate-900 leading-tight">Danantara</span>
+                          <span className="text-[6px] md:text-[8px] font-bold text-slate-500 leading-none">Indonesia</span>
                         </div>
                       </div>
 
                       {/* Top-right: Elnusa Badge */}
-                      <div className="bg-white px-4 py-2 rounded-bl-2xl rounded-tr-xl shadow-md flex items-center gap-2 border-b border-l border-slate-200 text-right">
+                      <div className="bg-white px-2 py-1 md:px-4 md:py-2 rounded-bl-xl md:rounded-bl-2xl rounded-tr-lg md:rounded-tr-xl shadow-md flex items-center gap-1 md:gap-2 border-b border-l border-slate-200 text-right">
                         <div className="flex flex-col">
-                          <span className="text-xs font-black text-elnusa-blue leading-tight tracking-tight">elnusa</span>
-                          <span className="text-[7px] font-semibold text-slate-500 leading-none">A Member of Subholding Upstream Pertamina</span>
+                          <span className="text-[10px] md:text-xs font-black text-elnusa-blue leading-tight tracking-tight">elnusa</span>
+                          <span className="text-[5px] md:text-[7px] font-semibold text-slate-500 leading-none">A Member of Subholding Upstream Pertamina</span>
                         </div>
-                        <div className="w-1.5 h-6 bg-elnusa-red rounded-full" />
+                        <div className="w-1 md:w-1.5 h-4 md:h-6 bg-elnusa-red rounded-full" />
                       </div>
                     </div>
 
                     {/* Content Area - Split */}
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center z-10 mt-12 mb-4 flex-1">
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center z-10 mt-12 md:mt-16 mb-4 flex-1">
                       {/* Left: decorative / empty as it's bg */}
                       <div className="md:col-span-5 h-full hidden md:block" />
 
                       {/* Right: Title and Guard Gate card */}
                       <div className="md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left space-y-4">
-                        <div className="space-y-1">
-                          <h1 className="text-3xl md:text-4.5xl font-black tracking-tight leading-none text-white drop-shadow-md">
+                        <div className="space-y-1 mt-6 md:mt-0">
+                          <h1 className="text-2xl md:text-4.5xl font-black tracking-tight leading-none text-white drop-shadow-md">
                             PROFIL
                           </h1>
-                          <h2 className="text-xl md:text-2xl font-bold tracking-tight text-slate-100 drop-shadow-sm">
+                          <h2 className="text-lg md:text-2xl font-bold tracking-tight text-slate-100 drop-shadow-sm">
                             Warehouse Elnusa BSD
                           </h2>
                         </div>
 
                         {/* Guard Gate Frame Card */}
-                        <div className="bg-white p-2.5 rounded-2xl shadow-xl max-w-sm w-full border border-slate-200">
+                        <div className="bg-white p-2 rounded-xl md:rounded-2xl shadow-xl max-w-sm w-full border border-slate-200">
                           <img 
                             src={img8965Optimized} 
                             alt="Gerbang Warehouse Elnusa BSD" 
-                            className="w-full h-[140px] object-cover rounded-xl"
+                            className="w-full h-[100px] sm:h-[120px] md:h-[140px] object-cover rounded-lg md:rounded-xl"
                             referrerPolicy="no-referrer"
                           />
-                          <p className="text-[9px] text-slate-500 font-bold text-center mt-1.5 font-mono">
+                          <p className="text-[8px] md:text-[9px] text-slate-500 font-bold text-center mt-1.5 font-mono">
                             DOKUMENTASI GERBANG UTAMA & AREA OPERASIONAL
                           </p>
                         </div>
@@ -357,22 +358,22 @@ export default function SlidePresenter() {
                     <div className="z-10 mt-auto space-y-3">
                       {/* Visi */}
                       <div className="text-center">
-                        <span className="text-[10px] md:text-xs font-bold tracking-wider text-white bg-slate-900/80 px-4 py-1.5 rounded-full inline-block border border-white/5">
+                        <span className="text-[8px] md:text-xs font-bold tracking-wider text-white bg-slate-900/80 px-3 py-1 md:px-4 md:py-1.5 rounded-full inline-block border border-white/5">
                           VISI: PERUSAHAAN JASA ENERGI TERKEMUKA YANG MEMBERIKAN SOLUSI TOTAL
                         </span>
                       </div>
 
                       {/* Overlay Info Boxes */}
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                        <div className="bg-slate-900/90 backdrop-blur-xs border border-white/10 rounded-xl p-3 shadow-sm">
+                        <div className="bg-slate-900/90 backdrop-blur-xs border border-white/10 rounded-xl p-2.5 md:p-3 shadow-sm">
                           <div className="text-[8px] text-slate-400 font-mono uppercase font-bold">LOKASI UTAMA</div>
                           <div className="text-[10px] font-bold text-slate-200 mt-0.5">BSD City, Tangerang Selatan</div>
                         </div>
-                        <div className="bg-slate-900/90 backdrop-blur-xs border border-white/10 rounded-xl p-3 shadow-sm">
+                        <div className="bg-slate-900/90 backdrop-blur-xs border border-white/10 rounded-xl p-2.5 md:p-3 shadow-sm">
                           <div className="text-[8px] text-slate-400 font-mono uppercase font-bold">TOTAL LUASAN LAHAN</div>
                           <div className="text-[10px] font-bold text-slate-200 mt-0.5">4.479 m² / 4 Blok Modular</div>
                         </div>
-                        <div className="bg-slate-900/90 backdrop-blur-xs border border-white/10 rounded-xl p-3 shadow-sm">
+                        <div className="bg-slate-900/90 backdrop-blur-xs border border-white/10 rounded-xl p-2.5 md:p-3 shadow-sm">
                           <div className="text-[8px] text-slate-400 font-mono uppercase font-bold">STANDARISASI INTERNASIONAL</div>
                           <div className="text-[10px] font-bold text-slate-200 mt-0.5">Sertifikasi 5 ISO Terintegrasi</div>
                         </div>
@@ -380,7 +381,7 @@ export default function SlidePresenter() {
 
                       {/* Social Media Badges */}
                       <div className="flex justify-center items-center gap-3 pt-1 border-t border-white/5">
-                        <div className="bg-white rounded-full px-3 py-1 text-[9px] text-slate-800 font-mono flex items-center gap-3.5 shadow-sm font-semibold">
+                        <div className="bg-white rounded-xl md:rounded-full px-3 py-1.5 md:py-1 text-[9px] text-slate-800 font-mono flex flex-wrap justify-center gap-2 md:gap-3.5 shadow-sm font-semibold">
                           <span className="flex items-center gap-1"><Globe className="w-3.5 h-3.5 text-blue-600" /> www.elnusa.co.id</span>
                           <span className="flex items-center gap-1"><Linkedin className="w-3.5 h-3.5 text-blue-700" /> PT Elnusa Tbk</span>
                           <span className="flex items-center gap-1"><Instagram className="w-3.5 h-3.5 text-pink-600" /> @elnusaofficial</span>
@@ -395,7 +396,7 @@ export default function SlidePresenter() {
                 {currentSlide === 1 && (
                   <div className="space-y-4 w-full h-full text-slate-900">
                     {/* Header bar */}
-                    <div className="flex justify-between items-center bg-slate-100 p-2.5 rounded-xl border border-slate-200 relative">
+                    <div className="flex flex-col sm:flex-row justify-between items-center bg-slate-100 p-2.5 rounded-xl border border-slate-200 gap-2 relative">
                       {/* Top left total luasan badge */}
                       <div className="bg-slate-900 text-white text-[9px] font-bold px-2.5 py-1 rounded font-mono">
                         Total Luasan: 4.479 M2
@@ -403,7 +404,7 @@ export default function SlidePresenter() {
 
                       {/* Header banner */}
                       <div className="bg-indigo-50 border border-indigo-100 px-6 py-2 rounded-lg mx-auto text-center shadow-xs">
-                        <h2 className="text-sm md:text-base font-black tracking-wide text-indigo-900 uppercase">
+                        <h2 className="text-xs md:text-base font-black tracking-wide text-indigo-900 uppercase">
                           Welcome To The Elnusa Warehouse - BSD
                         </h2>
                       </div>
@@ -422,7 +423,7 @@ export default function SlidePresenter() {
                         <img 
                           src={blockH123New} 
                           alt="BLOK H1-23" 
-                          className="w-full h-[180px] object-cover rounded-xl"
+                          className="w-full h-[110px] sm:h-[140px] md:h-[180px] object-cover rounded-xl"
                           referrerPolicy="no-referrer"
                         />
                         <div className="mt-3 text-center space-y-1.5">
@@ -440,7 +441,7 @@ export default function SlidePresenter() {
                         <img 
                           src={blockH121New} 
                           alt="BLOK H1-21" 
-                          className="w-full h-[180px] object-cover rounded-xl"
+                          className="w-full h-[110px] sm:h-[140px] md:h-[180px] object-cover rounded-xl"
                           referrerPolicy="no-referrer"
                         />
                         <div className="mt-3 text-center space-y-1.5">
@@ -458,7 +459,7 @@ export default function SlidePresenter() {
                         <img 
                           src={blockH120New} 
                           alt="BLOK H1-20" 
-                          className="w-full h-[180px] object-cover rounded-xl"
+                          className="w-full h-[110px] sm:h-[140px] md:h-[180px] object-cover rounded-xl"
                           referrerPolicy="no-referrer"
                         />
                         <div className="mt-3 text-center space-y-1.5">
@@ -476,7 +477,7 @@ export default function SlidePresenter() {
                         <img 
                           src={blockH119} 
                           alt="BLOK H1-19" 
-                          className="w-full h-[180px] object-cover rounded-xl"
+                          className="w-full h-[110px] sm:h-[140px] md:h-[180px] object-cover rounded-xl"
                           referrerPolicy="no-referrer"
                         />
                         <div className="mt-3 text-center space-y-1.5">
@@ -591,7 +592,7 @@ export default function SlidePresenter() {
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch pt-1">
                       {/* Satellite Image View */}
                       <div className="md:col-span-8 bg-white p-2.5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-center">
-                        <div className="relative w-full h-[280px] rounded-xl overflow-hidden border border-yellow-400">
+                        <div className="relative w-full h-[160px] sm:h-[220px] md:h-[280px] rounded-xl overflow-hidden border border-yellow-400">
                           <img 
                             src={aerialSitemap} 
                             alt="Aerial Site Map Elnusa BSD" 
