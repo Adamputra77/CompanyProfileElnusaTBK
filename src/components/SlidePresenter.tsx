@@ -10,6 +10,15 @@ import LabourStatistics from './LabourStatistics';
 import HsseDashboard from './HsseDashboard';
 import { BLOCKS_DATA, LABOUR_DATA, ABOUT_US_MANAGEMENT_SYSTEMS, BUSINESS_UNITS, TANTANGAN_STRATEGIS } from '../data/slidesData';
 
+// Import image assets
+import coverLeftBg from '../assets/images/cover_left_bg_1784259612125.jpg';
+import img8965Optimized from '../assets/images/IMG_8965_optimized.jpg';
+import blockH123New from '../assets/images/block_h1_23_new.jpg';
+import blockH121New from '../assets/images/block_h1_21_new.jpg';
+import blockH120New from '../assets/images/block_h1_20_new.jpg';
+import blockH119 from '../assets/images/block_h1_19_1784259724899.jpg';
+import aerialSitemap from '../assets/images/aerial_sitemap_1784259664261.jpg';
+
 type ViewMode = 'PRESENTATION' | 'GRID' | 'SANDBOX';
 
 export default function SlidePresenter() {
@@ -281,7 +290,7 @@ export default function SlidePresenter() {
                     <div className="absolute inset-0 z-0 flex">
                       <div className="w-1/2 relative h-full">
                         <img 
-                          src="/src/assets/images/cover_left_bg_1784259612125.jpg" 
+                          src={coverLeftBg} 
                           alt="Elnusa heavy equipment" 
                           className="w-full h-full object-cover"
                           referrerPolicy="no-referrer"
@@ -332,7 +341,7 @@ export default function SlidePresenter() {
                         {/* Guard Gate Frame Card */}
                         <div className="bg-white p-2.5 rounded-2xl shadow-xl max-w-sm w-full border border-slate-200">
                           <img 
-                            src="/src/assets/images/IMG_8965_optimized.jpg" 
+                            src={img8965Optimized} 
                             alt="Gerbang Warehouse Elnusa BSD" 
                             className="w-full h-[140px] object-cover rounded-xl"
                             referrerPolicy="no-referrer"
@@ -411,7 +420,7 @@ export default function SlidePresenter() {
                       {/* Card H1-23 */}
                       <div className="bg-white rounded-2xl border border-slate-200 p-2 shadow-xs flex flex-col justify-between hover:scale-102 transition-transform duration-200">
                         <img 
-                          src="/src/assets/images/block_h1_23_new.jpg" 
+                          src={blockH123New} 
                           alt="BLOK H1-23" 
                           className="w-full h-[180px] object-cover rounded-xl"
                           referrerPolicy="no-referrer"
@@ -429,7 +438,7 @@ export default function SlidePresenter() {
                       {/* Card H1-21 */}
                       <div className="bg-white rounded-2xl border border-slate-200 p-2 shadow-xs flex flex-col justify-between hover:scale-102 transition-transform duration-200">
                         <img 
-                          src="/src/assets/images/block_h1_21_new.jpg" 
+                          src={blockH121New} 
                           alt="BLOK H1-21" 
                           className="w-full h-[180px] object-cover rounded-xl"
                           referrerPolicy="no-referrer"
@@ -447,7 +456,7 @@ export default function SlidePresenter() {
                       {/* Card H1-20 */}
                       <div className="bg-white rounded-2xl border border-slate-200 p-2 shadow-xs flex flex-col justify-between hover:scale-102 transition-transform duration-200">
                         <img 
-                          src="/src/assets/images/block_h1_20_new.jpg" 
+                          src={blockH120New} 
                           alt="BLOK H1-20" 
                           className="w-full h-[180px] object-cover rounded-xl"
                           referrerPolicy="no-referrer"
@@ -465,7 +474,7 @@ export default function SlidePresenter() {
                       {/* Card H1-19 */}
                       <div className="bg-white rounded-2xl border border-slate-200 p-2 shadow-xs flex flex-col justify-between hover:scale-102 transition-transform duration-200">
                         <img 
-                          src="/src/assets/images/block_h1_19_1784259724899.jpg" 
+                          src={blockH119} 
                           alt="BLOK H1-19" 
                           className="w-full h-[180px] object-cover rounded-xl"
                           referrerPolicy="no-referrer"
@@ -584,7 +593,7 @@ export default function SlidePresenter() {
                       <div className="md:col-span-8 bg-white p-2.5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-center">
                         <div className="relative w-full h-[280px] rounded-xl overflow-hidden border border-yellow-400">
                           <img 
-                            src="/src/assets/images/aerial_sitemap_1784259664261.jpg" 
+                            src={aerialSitemap} 
                             alt="Aerial Site Map Elnusa BSD" 
                             className="w-full h-full object-cover"
                             referrerPolicy="no-referrer"
