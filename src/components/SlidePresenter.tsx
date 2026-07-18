@@ -12,12 +12,12 @@ import { BLOCKS_DATA, LABOUR_DATA, ABOUT_US_MANAGEMENT_SYSTEMS, BUSINESS_UNITS, 
 
 // Import image assets
 import coverLeftBg from '../assets/images/cover_left_bg_1784259612125.jpg';
-import img8965Optimized from '../assets/images/IMG_8965_optimized.jpg';
-import blockH123New from '../assets/images/block_h1_23_new.jpg';
-import blockH121New from '../assets/images/block_h1_21_new.jpg';
-import blockH120New from '../assets/images/block_h1_20_new.jpg';
+import img8965Optimized from '../assets/images/IMG_8965_real.jpg';
+import blockH123New from '../assets/images/block_h1_23_real.jpg';
+import blockH121New from '../assets/images/block_h1_21_real.jpg';
+import blockH120New from '../assets/images/block_h1_20_real.jpg';
 import blockH119 from '../assets/images/block_h1_19_1784259724899.jpg';
-import aerialSitemap from '../assets/images/aerial_sitemap_1784259664261.jpg';
+import aerialSitemap from '../assets/images/aerial_sitemap_real.jpg';
 
 type ViewMode = 'PRESENTATION' | 'GRID' | 'SANDBOX';
 
